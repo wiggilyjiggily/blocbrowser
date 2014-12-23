@@ -13,6 +13,7 @@
 		A192FC6C1A487BDA00B36C15 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A192FC6B1A487BDA00B36C15 /* Images.xcassets */; };
 		A192FC7B1A487BDA00B36C15 /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A192FC7A1A487BDA00B36C15 /* BlocBrowserTests.m */; };
 		A192FC861A487D1300B36C15 /* WebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A192FC851A487D1300B36C15 /* WebBrowserViewController.m */; };
+		A192FC891A49E6EC00B36C15 /* AwesomeFloatingToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A192FC881A49E6EC00B36C15 /* AwesomeFloatingToolbar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,8 @@
 		A192FC7A1A487BDA00B36C15 /* BlocBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocBrowserTests.m; sourceTree = "<group>"; };
 		A192FC841A487D1300B36C15 /* WebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBrowserViewController.h; sourceTree = "<group>"; };
 		A192FC851A487D1300B36C15 /* WebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebBrowserViewController.m; sourceTree = "<group>"; };
+		A192FC871A49E6EC00B36C15 /* AwesomeFloatingToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeFloatingToolbar.h; sourceTree = "<group>"; };
+		A192FC881A49E6EC00B36C15 /* AwesomeFloatingToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeFloatingToolbar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 			children = (
 				A192FC621A487BDA00B36C15 /* AppDelegate.h */,
 				A192FC631A487BDA00B36C15 /* AppDelegate.m */,
+				A192FC871A49E6EC00B36C15 /* AwesomeFloatingToolbar.h */,
+				A192FC881A49E6EC00B36C15 /* AwesomeFloatingToolbar.m */,
 				A192FC651A487BDA00B36C15 /* ViewController.h */,
 				A192FC661A487BDA00B36C15 /* ViewController.m */,
 				A192FC841A487D1300B36C15 /* WebBrowserViewController.h */,
@@ -218,6 +223,7 @@
 			files = (
 				A192FC671A487BDA00B36C15 /* ViewController.m in Sources */,
 				A192FC641A487BDA00B36C15 /* AppDelegate.m in Sources */,
+				A192FC891A49E6EC00B36C15 /* AwesomeFloatingToolbar.m in Sources */,
 				A192FC861A487D1300B36C15 /* WebBrowserViewController.m in Sources */,
 				A192FC611A487BDA00B36C15 /* main.m in Sources */,
 			);
