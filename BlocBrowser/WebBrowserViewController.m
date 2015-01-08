@@ -93,6 +93,14 @@
     
     NSString *URLString = textField.text;
     
+    NSRange whiteSpaceRange = [URLString rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    if (whiteSpaceRange.location != NSNotFound) {
+        URLString = [NSString stringWithFormat:@"google.com/search?q=%@", URLString];
+        URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSLog(@"%@", URLString);
+    }
+    
     NSURL *URL = [NSURL URLWithString:URLString];
     
     if (!URL.scheme) {
