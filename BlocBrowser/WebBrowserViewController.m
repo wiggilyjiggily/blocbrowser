@@ -44,6 +44,10 @@
 - (void)loadView {
     UIView *mainView = [UIView new];
     
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Welcome", @"Welcome title") message:NSLocalizedString(@"Get excited to use the best web browser in the whole wide world!", @"Welcome comment") delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok, I'm excited!", @"Welcome button title") otherButtonTitles: nil];
+    
+    [alert show];
+    
     self.webview = [[UIWebView alloc] init];
     self.webview.delegate = self;
     
