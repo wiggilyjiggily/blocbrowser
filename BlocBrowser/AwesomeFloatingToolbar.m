@@ -19,7 +19,7 @@
 
 @implementation AwesomeFloatingToolbar
 
-- (instancetype)initwithFourTitles:(NSArray *)titles {
+- (instancetype)initWithFourTitles:(NSArray *)titles {
     self = [super init];
     
     if (self) {

@@ -20,7 +20,7 @@
 
 @interface AwesomeFloatingToolbar : UIView
 
-- (instancetype)initwithFourTitles:(NSArray *)titles;
+- (instancetype)initWithFourTitles:(NSArray *)titles;
 
 - (void)setEnabled:(BOOL)enabled forButtonWithTitle:(NSString *)title;
 

@@ -60,7 +60,7 @@
     self.textfield.backgroundColor = [UIColor colorWithWhite:220/255.0f alpha:1];
     self.textfield.delegate = self;
     
-    self.awesomeToolbar = [[AwesomeFloatingToolbar alloc] initwithFourTitles:@[kWebBrowserBackString, kWebBrowserForwardString, kWebBrowserStopString, kWebBrowserRefreshString]];
+    self.awesomeToolbar = [[AwesomeFloatingToolbar alloc] initWithFourTitles:@[kWebBrowserBackString, kWebBrowserForwardString, kWebBrowserStopString, kWebBrowserRefreshString]];
     self.awesomeToolbar.delegate = self;
     
     for (UIView *viewToAdd in @[self.webview, self.textfield, self.awesomeToolbar]) {
