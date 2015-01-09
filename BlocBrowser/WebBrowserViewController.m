@@ -169,13 +169,13 @@
 #pragma mark - AwesomeFloatingToolbarDelegate
 
 - (void)floatingToolbar:(AwesomeFloatingToolbar *)toolbar didSelectButtonWithTitle:(NSString *)title {
-    if ([title isEqual:NSLocalizedString(@"Back", @"Back command")]) {
+    if ([title isEqual:kWebBrowserBackString]) {
         [self.webview goBack];
-    } else if ([title isEqual:NSLocalizedString(@"Forward", @"Forward command")]) {
+    } else if ([title isEqual:kWebBrowserForwardString]) {
         [self.webview goForward];
-    } else if ([title isEqual:NSLocalizedString(@"Stop", @"Stop command")]) {
+    } else if ([title isEqual:kWebBrowserStopString]) {
         [self.webview stopLoading];
-    } else if ([title isEqual:NSLocalizedString(@"Refresh", @"Refresh command")]) {
+    } else if ([title isEqual:kWebBrowserRefreshString]) {
         [self.webview reload];
     }
 }
