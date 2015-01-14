@@ -11,9 +11,15 @@
 @interface AwesomeFloatingToolbar ()
 
 @property (nonatomic, strong) NSArray *currentTitles;
-@property (nonatomic, strong) NSArray *colors;
+@property (nonatomic, strong) NSMutableArray *colors;
 @property (nonatomic, strong) NSArray *labels;
+
 @property (nonatomic, weak) UILabel *currentLabel;
+
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
+@property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, strong) UIPinchGestureRecognizer *pinchGesture;
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPress;
 
 @end
 
@@ -53,8 +59,79 @@
         for (UILabel *thisLabel in self.labels) {
             [self addSubview:thisLabel];
         }
+        
+        self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFired:)];
+        [self addGestureRecognizer:self.tapGesture];
+        
+        self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panFired:)];
+        [self addGestureRecognizer:self.panGesture];
+        
+        self.pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchFired:)];
+        [self addGestureRecognizer:self.pinchGesture];
+        
+        self.longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longFired:)];
+        [self addGestureRecognizer:self.longPress];
     }
     return self;
+}
+
+- (void)tapFired:(UITapGestureRecognizer *)sender {
+    
+    if (sender.state == UIGestureRecognizerStateRecognized) {
+        
+        CGPoint location = [sender locationInView:self];
+        UIView *tappedView = [self hitTest:location withEvent:nil];
+        
+        if ([self.labels containsObject:tappedView]) {
+            if ([self.delegate respondsToSelector:@selector(floatingToolbar:didSelectButtonWithTitle:)]) {
+                [self.delegate floatingToolbar:self didSelectButtonWithTitle:((UILabel *)tappedView).text];
+            }
+        }
+    }
+}
+
+- (void)panFired:(UIPanGestureRecognizer *)sender {
+    
+    if (sender.state == UIGestureRecognizerStateChanged) {
+        
+        CGPoint translation = [sender translationInView:self];
+        NSLog(@"New translation: %@", NSStringFromCGPoint(translation));
+        
+        if ([self.delegate respondsToSelector:@selector(floatingToolbar:didTryToPanWithOffset:)]) {
+            [self.delegate floatingToolbar:self didTryToPanWithOffset:translation];
+        }
+        
+        [sender setTranslation:CGPointZero inView:self];
+    }
+}
+
+- (void)pinchFired:(UIPinchGestureRecognizer *)sender {
+    
+    if (sender.state == UIGestureRecognizerStateChanged) {
+        
+        NSLog(@"New scale: %f", [sender scale]);
+        
+        if ([self.delegate respondsToSelector:@selector(floatingToolbar:didTryToPinchWithScale:)]) {
+            [self.delegate floatingToolbar:self didTryToPinchWithScale:[sender scale]];
+        }
+        
+        [sender setScale:[sender scale]];
+    }
+}
+
+- (void)longFired:(UILongPressGestureRecognizer *)sender {
+    
+    if (sender.state == UIGestureRecognizerStateRecognized) {
+        
+        [self.colors exchangeObjectAtIndex:2 withObjectAtIndex:3];
+        [self.colors exchangeObjectAtIndex:0 withObjectAtIndex:1];
+        
+        for (UILabel *label in self.labels) {
+            NSUInteger currentLabelIndex = [self.labels indexOfObject:label];
+            UIColor *colorForThisLabel = [self.colors objectAtIndex:currentLabelIndex];
+            label.backgroundColor = colorForThisLabel;
+        }
+    }
 }
 
 - (void)layoutSubviews {
